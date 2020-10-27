@@ -50,6 +50,7 @@ class MusicLibraryController
     ordered_list = Song.all.sort {|a, b| a.name <=> b.name}
     ordered_list.each.with_index(1) do |song, index|
         puts "#{index}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+    ordered_list
     end
   end
   
@@ -98,12 +99,37 @@ class MusicLibraryController
   def play_song
     puts "Which song number would you like to play?"
     user_index = gets.strip.to_i - 1
+<<<<<<< HEAD
     if user_index.between?(0, Song.all.length - 1)
         ordered_list_song = Song.all.sort {|song1, song2| song1.name <=> song2.name}
         user_song = ordered_list_song[user_index]
             puts "Playing #{user_song.name} by #{user_song.artist.name}"
     end
   end
+=======
+    
+    if user_index.between?(0, Song.all.length - 1)
+        ordered_list_song = self.list_songs
+        ordered_list_song.each.with_index do |song, index|
+          #binding.pry
+           index == user_index
+            puts "Playing #{song.name} by #{song.artist.name}"
+      end
+    end
+  end
+  
+  # def play_song
+  #   puts "Which song number would you like to play?"
+  #   index = gets.strip.to_i
+    
+  #   if index.between?(0, Song.all.length - 1)
+  #     # binding.pry
+
+  #   end
+    
+    
+  # end
+>>>>>>> ed03feebcef5c93740b6c62470c93c5f95f8a106
   
   
 end
